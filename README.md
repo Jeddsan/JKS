@@ -1,0 +1,2 @@
+# JKS
+Jeddsan Kora Script
