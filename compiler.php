@@ -3,15 +3,45 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 //$code is the input
 $code="
-var number1= 3;
+var number1 = 3;
 var number2 = 4;
+require_once \"delete_all.php\";
+eval('delete');
 var result = number2 + number1;
+if( result == 2){
+  result = 5;
+}else{
+  var text = \"'include' something\";
+}
 echo result;
+echo text;
 ";
 //Declaration
 $vars=array();
 $last_var_position=0;
 
+//Definitions
+//$code = str_ireplace("\"","'",$code);
+
+$lines_arr = preg_split('/\n|\r/',$code);
+$num_lines = count($lines_arr);
+
+$code="";
+
+//Excluding functions
+for ($i=0; $i < $num_lines; $i++) {
+  $current_line=$lines_arr[$i];
+  if(
+  contains("include ",$current_line)||
+  contains("include_once ",$current_line)||
+  contains("require ",$current_line)||
+  contains("require_once ",$current_line)||
+  contains("eval(",$current_line)){
+
+  }else{
+    $code.=$current_line."\n";
+  }
+}
 //Variables
 $code=str_replace("var ","$",$code,$count_set_variables);
 for ($i=0; $i < $count_set_variables; $i++) {
@@ -23,12 +53,23 @@ for ($i=0; $i < $count_set_variables; $i++) {
   $start_position_var=0;
   $end_position_var=0;
 }
-print_r($vars);
 for ($i=0; $i < count($vars); $i++){
   $current_var=$vars[$i];
   $code=str_replace(" $current_var"," $$current_var",$code);
 }
-echo nl2br($code);
+
+function contains($substring, $string) {
+  $pos = strpos($string, $substring);
+  if($pos === false) {
+    return false;
+  }else{
+  	return true;
+  }
+}
+//Cleaning
+$code=trim($code);
+
+echo nl2br($code)."<br><br>";
 eval($code);
 //$code is the output
 ?>
