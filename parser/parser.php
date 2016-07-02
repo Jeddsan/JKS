@@ -10,7 +10,7 @@
     <body>
         <div class="container">
             <form method="post" action="parser.php">
-                <textarea name="input" placeholder="Your code here"></textarea>
+                <textarea name="input" placeholder="Your code here"><?php if(isset($_POST["input"]))echo($_POST["input"]);?></textarea>
                 <button class="btn">Parse</button>
             </form>
             <?php
@@ -26,24 +26,37 @@
 
 <?php
 
-$variables = array("" => '');
+$variables = array();
+$functions = array();
 
 function getParseResult($code){
     $result = "";
-    $regex_defined_variables = "/(var [a-zA-Z_]+[ ]*=[a-zA-Z0-9_\"{}+!?. ]+;)/";
-    preg_match_all($regex_defined_variables, $code, $matches);
-    echo("Number of defined variables: ".count($matches[0])."<br />");
-    for($i = 0;$i<count($matches[0]);$i++){
-        $var = $matches[0][$i];
+    $regex_defined_variables = "/(var [a-zA-Z_]+[ ]*=[a-zA-Z0-9_\"{}+\-*\/!?. ]+;)/";
+    preg_match_all($regex_defined_variables, $code, $matched_defined_vars);
+    echo("Number of defined variables: ".count($matched_defined_vars[0])."<br />");
+    for($i = 0;$i<count($matched_defined_vars[0]);$i++){
+        $var = $matched_defined_vars[0][$i];
         $var = substr($var,4);
         $var = str_replace(" ","",$var);
         $parts = split("=",$var);
         $variables[$parts[0]] = $parts[1];
-        echo("Defined variable: ".$var."<br />");
+    }
+
+    $regex_number_of_functions = "/(function [a-zA-Z_]+\([a-zA-Z, ]*\)[ ]*{[a-zA-Z0-9 .=+\/();\"\-\n\r\t]*})/";
+    preg_match_all($regex_number_of_functions, $code, $matched_functions);
+    echo("Number of functions: ".count($matched_functions[0])."<br />");
+    for($i = 0;$i<count($matched_functions[0]);$i++){
+        $function = $matched_functions[0][$i];
+        $function = str_replace("function ","",$function);
+        $name = strstr($function,'(',true);
+        $function = str_replace($name,"",$function);
+        $functions[$name] = $function;
     }
 
     echo("<b>Stored variables:</b> <br />");
     print_r($variables);
+    echo("<br /><b>Stored functions:</b> <br />");
+    print_r($functions);
     return $result;
 }
 ?>
