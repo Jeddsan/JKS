@@ -1,3 +1,7 @@
+#Important Note:
+
+This software is in the alpha stages, please do NOT use this in a production environment!
+
 # What is JKS
 JKS stands for Jeddsan Kora Script and is the main programming language for Jeddsan Kora. It based on PHP. JKS at self is only a new Syntax which let you programm your own modules with Jeddsan Kora.
 
