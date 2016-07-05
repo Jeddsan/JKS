@@ -55,26 +55,49 @@ function parseJKS($code){
 		return false;
 	}
 	//JKS functions
-		function jks_cnt($array){
-			return count($array);
-		}
-		function jks_sum($num1,$num2){
+		//Math
+		function jks_math_sum($num1,$num2){
 			return $num1+$num2;
 		}
-		function jks_dif($num1,$num2){
+		function jks_math_dif($num1,$num2){
 			return $num1-$num2;
 		}
-		function jks_mul($num1,$num2){
+		function jks_math_mul($num1,$num2){
 			return $num1*$num2;
 		}
-		function jks_div($num1,$num2){
+		function jks_math_div($num1,$num2){
 			return $num1/$num2;
 		}
-		function jks_rnd($num){
+		function jks_math_rnd($num){
 			return round($num);
 		}
+		function jks_math_rnd_d($num){
+			return floor($num);
+		}
+		function jks_math_rnd_u($num){
+			return ceil($num);
+		}
+		function jks_math_sqro($num){
+			return sqrt($num);
+		}
+		function jks_math_tan($num){
+			return tan($num);
+		}
+		function jks_math_sin($num){
+			return sin($num);
+		}
+		function jks_math_cos($num){
+			return cos($num);
+		}
+		function jks_math_pi(){
+			return pi();
+		}
+		//Array
 		function jks_print_arr($arr){
 			return print_r($arr);
+		}
+		function jks_cnt($array){
+			return count($array);
 		}
 		//Get Data
 		function jks_gt_json($url){
@@ -90,6 +113,9 @@ function parseJKS($code){
 		//String Modifications
 		function jks_string_repl($search,$replace,$string){
 			return str_replace($search,$replace,$string);
+		}
+		function jks_string_i_repl($search,$replace,$string){
+			return str_ireplace($search,$replace,$string);
 		}
 		function jks_string_find($search,$string){
 			return strpos($search,$string);
