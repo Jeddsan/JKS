@@ -23,6 +23,7 @@ Then you make a parse with the compiler like that:<br>
   $php_code = parseJKS($code);
 </code>
 <br><br>
+If you got the new PHP Code you can run it via the command <code>eval()</code><br><br>
 Now your ready to programm with the new JKS syntax.
 
 Enjoy!
