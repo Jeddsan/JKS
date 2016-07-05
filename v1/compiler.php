@@ -46,7 +46,8 @@ function parseJKS($code){
   //Functions
 	$functions=get_defined_functions();
 	for($i=0;$i<count($functions["internal"]);$i++){
-		$code=str_replace($functions["internal"][$i]."(","no_function(",$code);
+		//$code=str_replace($functions["internal"][$i]."(","no_function(",$code);
+		$code=preg_replace('('.$functions["internal"][$i].'+( )*\(.*\);)',"no_function(",$code);
 	}
 	//print_r($functions);
 	//Null-Function
@@ -89,14 +90,26 @@ function parseJKS($code){
 		function jks_math_cos($num){
 			return cos($num);
 		}
-		function jks_math_pi(){
+		function jks_math_log($num){
+			return log($num);
+		}
+		function jks_math_min($array){
+			return min($array);
+		}
+		function jks_math_max($array){
+			return max($array);
+		}
+		function jks_math_pi_number(){
 			return pi();
 		}
+		function jks_math_random($num1,$num2){
+			return rand($num1,$num2);
+		}
 		//Array
-		function jks_print_arr($arr){
+		function jks_arr_prn($arr){
 			return print_r($arr);
 		}
-		function jks_cnt($array){
+		function jks_arr_cnt($array){
 			return count($array);
 		}
 		//Get Data
@@ -110,6 +123,13 @@ function parseJKS($code){
 			$data = simplexml_load_string($get);
 			return $data;
 		}
+		//Time
+		function jks_time_curtim(){
+			return time();
+		}
+		function jks_time_datetext($string,$time){
+			return date($string,$time);
+		}
 		//String Modifications
 		function jks_string_repl($search,$replace,$string){
 			return str_replace($search,$replace,$string);
@@ -118,7 +138,17 @@ function parseJKS($code){
 			return str_ireplace($search,$replace,$string);
 		}
 		function jks_string_find($search,$string){
-			return strpos($search,$string);
+			return strpos($string,$search);
+		}
+		function jks_string_i_find($search,$string){
+			return stripos($string,$search);
+		}
+		function jks_string_sub($start,$end,$string){
+			if($start>$end){
+				throw new Exception("Start is higher than end.");
+			}else{
+				return substr($string,$start,$end-$start+1);
+			}
 		}
 	//End JKS functions
   
