@@ -4,15 +4,11 @@ function parseJKS($code){
   //Declaration
   $vars=array();
   $last_var_position=0;
-
   //Definitions
   //$code = str_ireplace("\"","'",$code);
-
   $lines_arr = preg_split('/\n|\r/',$code);
   $num_lines = count($lines_arr);
-
   $code="";
-
   //Excluding functions
   for ($i=0; $i < $num_lines; $i++) {
 	$current_line=$lines_arr[$i];
@@ -21,12 +17,11 @@ function parseJKS($code){
 	contains("include_once",$current_line)||
 	contains("require",$current_line)||
 	contains("require_once",$current_line)){
-
 	}else{
 	  $code.=$current_line."\n";
 	}
   }
-  
+
   //Variables
   $code=str_replace("var ","$",$code,$count_set_variables);
   for ($i=0; $i < $count_set_variables; $i++) {
@@ -42,12 +37,16 @@ function parseJKS($code){
 	$current_var=$vars[$i];
 	$code=str_replace(" $current_var"," $$current_var",$code);
   }
-  
+
   //Functions
 	$functions=get_defined_functions();
 	for($i=0;$i<count($functions["internal"]);$i++){
 		//$code=str_replace($functions["internal"][$i]."(","no_function(",$code);
-		$code=preg_replace('('.$functions["internal"][$i].'+( )*\(.*\)[ ]*;)',"no_function(",$code);
+    if($functions["internal"][$i]=="array"){
+
+    }else{
+  		$code=preg_replace('('.strtolower($functions["internal"][$i]).'+( )*\(.*\)[ ]*;)',"no_function(",$code);
+    }
 	}
 	//print_r($functions);
 	//Null-Function
@@ -154,7 +153,7 @@ function parseJKS($code){
 			}
 		}
 	//End JKS functions
-  
+
   //Cleaning
   $code=trim($code);
   return $code;
