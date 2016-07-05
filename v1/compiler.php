@@ -47,7 +47,7 @@ function parseJKS($code){
 	$functions=get_defined_functions();
 	for($i=0;$i<count($functions["internal"]);$i++){
 		//$code=str_replace($functions["internal"][$i]."(","no_function(",$code);
-		$code=preg_replace('('.$functions["internal"][$i].'+( )*\(.*\);)',"no_function(",$code);
+		$code=preg_replace('('.$functions["internal"][$i].'+( )*\(.*\)[ ]*;)',"no_function(",$code);
 	}
 	//print_r($functions);
 	//Null-Function
