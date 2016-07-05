@@ -130,6 +130,9 @@ function parseJKS($code){
 		function jks_time_datetext($string,$time){
 			return date($string,$time);
 		}
+		function jks_time_convert_st($string){
+			return strtotime($string);
+		}
 		//String Modifications
 		function jks_string_repl($search,$replace,$string){
 			return str_replace($search,$replace,$string);
