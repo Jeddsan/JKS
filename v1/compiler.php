@@ -90,6 +90,9 @@ function parseJKS($code){
 		function jks_math_log($num){
 			return log($num);
 		}
+		function jks_math_expo($num){
+			return exp($num);
+		}
 		function jks_math_min($array){
 			return min($array);
 		}
@@ -119,6 +122,9 @@ function parseJKS($code){
 			function jks_math_oct2dec($number){
 				return octdec($number);
 			}
+			function jks_math_base_c($number,$from=10,$to=2){
+				return base_convert($number,$from,$to);
+			}
 			//Randomnumber
 			function jks_math_random($num1,$num2){
 				if($num1>$num2){
@@ -139,6 +145,24 @@ function parseJKS($code){
 		}
 		function jks_arr_order($array){
 			return sort($array);
+		}
+		function jks_arr_keys($array){
+			return array_keys($array);
+		}
+		function jks_arr_values($array){
+			return array_values($array);
+		}
+		function jks_arr_diff($array1,$array2){
+			return array_diff($array1,$array2);
+		}
+		function jks_arr_diff_assoc($array1,$array2){
+			return array_diff_assoc($array1,$array2);
+		}
+		function jks_arr_last_delete($array){
+			return array_pop($array);
+		}
+		function jks_arr_array_in($search,$array){
+			return in_array($search,$array);
 		}
 		//PRCE-functions (RegEx)
 		function jks_reg_repl($regex,$replace,$string){
@@ -306,6 +330,28 @@ function parseJKS($code){
 		}
 		function jks_bool_c_v($string){
 			return boolval($string);
+		}
+		//Validations
+		function jks_vali_url($url){
+			if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$url)) {
+				return false;
+			}else{
+				return true;
+			}
+		}
+		function jks_vali_mailing($email){
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				return false;
+			}else{
+				return true;
+			}
+		}
+		function jks_vali_name($name){
+			if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+				return false;
+			}else{
+				return true;
+			}
 		}
 		//Other functions
 		function jks_type_get($string){
