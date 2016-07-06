@@ -191,9 +191,63 @@ function parseJKS($code){
 		function jks_string_ed_html($string){
 			return html_entity_decode($string);
 		}
+		function jks_string_slashes_add($string){
+			return addslashes($string);
+		}
+		function jks_string_slashes_addc($string){
+			return addcslashes($string);
+		}
+		function jks_string_slashes_remove($string){
+			return removeslashes($string);
+		}
+		function jks_string_slashes_strip($string){
+			return stripslashes($string);
+		}
+		function jks_string_slashes_stripc($string){
+			return stripcslashes($string);
+		}
 		//Boolean functions
 		function jks_bool_isst($string){
 			return isset($string);
+		}
+		function jks_bool_bool_is($string){
+			return is_bool($string);
+		}
+		function jks_bool_array_is($string){
+			return is_array($string);
+		}
+		function jks_bool_string_is($string){
+			return is_string($string);
+		}
+		function jks_bool_int_is($string){
+			return is_int($string);
+		}
+		function jks_bool_integer_is($string){
+			return is_integer($string);
+		}
+		function jks_bool_double_is($string){
+			return is_double($string);
+		}
+		function jks_bool_float_is($string){
+			return is_float($string);
+		}
+		function jks_bool_long_is($string){
+			return is_long($string);
+		}
+		function jks_bool_null_is($string){
+			return is_null($string);
+		}
+		function jks_bool_numeric_is($string){
+			return is_numeric($string);
+		}
+		function jks_bool_binary_is($string){
+			return is_binary($string);
+		}
+		function jks_bool_object_is($string){
+			return is_object($string);
+		}
+		function jks_bool_c_v($string){
+			return boolval($string);
 		}
 	//End JKS functions
   //Cleaning
