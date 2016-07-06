@@ -206,6 +206,34 @@ function parseJKS($code){
 		function jks_string_slashes_stripc($string){
 			return stripcslashes($string);
 		}
+		function jks_string_impl($split,$array){
+			return implode($split,$array);
+		}
+		function jks_string_expl($split,$array){
+			return explode($split,$array);
+		}
+		function jks_string_down($string){
+			return strtolower($string);
+		}
+		function jks_string_up($string){
+			return strtoupper($string);
+		}
+		function jks_string_tr($string){
+			return trim($string);
+		}
+		function jks_string_wowr($string){
+			return wordwrap($string);
+		}
+		function jks_string_spli($string,$length=1){
+			return str_split($string,$length);
+		}
+		//String stats
+		function jks_string_char_cnt($string){
+			return strlen($string);
+		}
+		function jks_string_word_cnt($string){
+			return str_word_count($string);
+		}
 		//Boolean functions
 		function jks_bool_isst($string){
 			return isset($string);
@@ -248,6 +276,10 @@ function parseJKS($code){
 		}
 		function jks_bool_c_v($string){
 			return boolval($string);
+		}
+		//Other functions
+		function jks_type_get($string){
+			return gettype($string);
 		}
 	//End JKS functions
   //Cleaning
