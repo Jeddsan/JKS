@@ -10,22 +10,22 @@ At the moment, the compiler is still in alpha and must updated mostly every day.
 
 # How to use as a standalone application
 The syntax is simple. You must require the compiler.php file on the top of your PHP-File.<br>
-<code>
+```php
 require "compiler.php";
-</code>
+```
 <br><br>
 After that you can programm your code in a string like this.<br>
-<code>
+```php
 $code = '
 var data = 34;
 echo data;
 ';
-</code>
+```
 <br><br>
 Then you make a parse with the compiler like that:<br>
-<code>
+```php
   $php_code = parseJKS($code);
-</code>
+```
 <br><br>
 If you got the new PHP Code you can run it via the command <code>eval()</code><br><br>
 Now your ready to programm with the new JKS syntax.
