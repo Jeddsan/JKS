@@ -96,16 +96,37 @@ function parseJKS($code){
 		function jks_math_max($array){
 			return max($array);
 		}
-		function jks_math_pi_number(){
-			return pi();
-		}
-		function jks_math_random($num1,$num2){
-			if($num1>$num2){
-				throw new Exception("First number is higher than second number.");
-			}else{
-				return rand($num1,$num2);
+			//Pi
+			function jks_math_pi_number(){
+				return pi();
 			}
-		}
+			//Numbersystems
+			function jks_math_dec2bin($number){
+				return decbin($number);
+			}
+			function jks_math_bin2dec($number){
+				return bindec($number);
+			}
+			function jks_math_dec2hex($number){
+				return dechex($number);
+			}
+			function jks_math_hex2dec($number){
+				return hexdec($number);
+			}
+			function jks_math_dec2oct($number){
+				return decoct($number);
+			}
+			function jks_math_oct2dec($number){
+				return octdec($number);
+			}
+			//Randomnumber
+			function jks_math_random($num1,$num2){
+				if($num1>$num2){
+					throw new Exception("First number is higher than second number.");
+				}else{
+					return rand($num1,$num2);
+				}
+			}
 		//Array
 		function jks_arr_prn($arr){
 			return print_r($arr);
@@ -279,6 +300,9 @@ function parseJKS($code){
 		}
 		function jks_bool_infinite_is($number){
 			return is_infinite($number);
+		}
+		function jks_bool_nan_is($number){
+			return is_nan($number);
 		}
 		function jks_bool_c_v($string){
 			return boolval($string);
