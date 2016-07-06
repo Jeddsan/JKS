@@ -11,7 +11,7 @@ At the moment, the compiler is still in alpha and must updated mostly every day.
 # How to use as a standalone application
 The syntax is simple. You must require the compiler.php file on the top of your PHP-File.<br>
 ```php
-require "compiler.php";
+require "v1/compiler.php";
 ```
 <br><br>
 After that you can programm your code in a string like this.<br>
