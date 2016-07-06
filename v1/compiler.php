@@ -156,7 +156,7 @@ function parseJKS($code){
 		function jks_time_datetext($string,$time = '0'){
 			return date($string,$time);
 		}
-		function jks_time_convert_st($string){
+		function jks_time_string_c($string){
 			return strtotime($string);
 		}
 		//String Modifications
@@ -179,16 +179,16 @@ function parseJKS($code){
 				return substr($string,$start,$end-$start+1);
 			}
 		}
-		function jks_string_c_html($string){
+		function jks_string_html_c($string){
 			return htmlspecialchars($string);
 		}
-		function jks_string_e_html($string){
+		function jks_string_html_e($string){
 			return htmlentities($string);
 		}
-		function jks_string_cd_html($string){
+		function jks_string_html_cd($string){
 			return htmlspecialchars_decode($string);
 		}
-		function jks_string_ed_html($string){
+		function jks_string_html_ed($string){
 			return html_entity_decode($string);
 		}
 		function jks_string_slashes_add($string){
@@ -274,12 +274,21 @@ function parseJKS($code){
 		function jks_bool_object_is($string){
 			return is_object($string);
 		}
+		function jks_bool_finite_is($number){
+			return is_finite($number);
+		}
+		function jks_bool_infinite_is($number){
+			return is_infinite($number);
+		}
 		function jks_bool_c_v($string){
 			return boolval($string);
 		}
 		//Other functions
 		function jks_type_get($string){
 			return gettype($string);
+		}
+		function jks_string_contains($search,$string){
+			return jks_contains($search,$string);
 		}
 	//End JKS functions
   //Cleaning
