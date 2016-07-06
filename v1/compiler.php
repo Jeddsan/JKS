@@ -91,13 +91,13 @@ function parseJKS($code){
 		function jks_math_sqro($num){
 			return sqrt($num);
 		}
-		function jks_math_tan($num){
+		function jks_math_tang($num){
 			return tan($num);
 		}
-		function jks_math_sin($num){
+		function jks_math_sinu($num){
 			return sin($num);
 		}
-		function jks_math_cos($num){
+		function jks_math_cosi($num){
 			return cos($num);
 		}
 		function jks_math_log($num){
