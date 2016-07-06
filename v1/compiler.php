@@ -1,4 +1,13 @@
 <?php
+//Error Exception
+class JKSParseError extends Exception {
+  public function errorMessage() {
+    //error message
+    $errorMsg = '<br><br><b>JKS Parse Error:</b> Error on line '.$this->getLine().' in '.$this->getFile()
+    .': <b>'.$this->getMessage().'</b><br><br>';
+    return $errorMsg;
+  }
+}
 //$code is the input
 function parseJKS($code){
   //Declaration
@@ -49,7 +58,11 @@ function parseJKS($code){
 	//print_r($functions);
 	//Null-Function
 	function no_function(){
-		throw new Exception("Function not known");
+		try{
+			throw new JKSParseError("Function not known");
+		}catch(JKSParseError $e){
+			echo $e->errorMessage();
+		}
 		return false;
 	}
 	//JKS functions
@@ -128,7 +141,11 @@ function parseJKS($code){
 			//Randomnumber
 			function jks_math_random($num1,$num2){
 				if($num1>$num2){
-					throw new Exception("First number is higher than second number.");
+					try{
+						throw new JKSParseError("First number is higher than second number.");
+					}catch(JKSParseError $e){
+						echo $e->errorMessage();
+					}
 				}else{
 					return rand($num1,$num2);
 				}
@@ -219,7 +236,11 @@ function parseJKS($code){
 		}
 		function jks_string_sub($start,$end,$string){
 			if($start>$end){
-				throw new Exception("Start is higher than end.");
+				try{
+					throw new JKSParseError("Start is higher than end.");
+				}catch(JKSParseError $e){
+					echo $e->errorMessage();
+				}
 			}else{
 				return substr($string,$start,$end-$start+1);
 			}
