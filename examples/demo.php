@@ -1,5 +1,5 @@
 <?php
-require("compiler.php");
+require("../v1/compiler.php");
 $code='
 var data = "";
  data = jks_gt_json("data.json");
