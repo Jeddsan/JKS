@@ -13,10 +13,10 @@ function parseJKS($code){
   for ($i=0; $i < $num_lines; $i++) {
 	$current_line=$lines_arr[$i];
 	if(
-	contains("include",$current_line)||
-	contains("include_once",$current_line)||
-	contains("require",$current_line)||
-	contains("require_once",$current_line)){
+	jks_contains("include",$current_line)||
+	jks_contains("include_once",$current_line)||
+	jks_contains("require",$current_line)||
+	jks_contains("require_once",$current_line)){
 	}else{
 	  $code.=$current_line."\n";
 	}
@@ -100,7 +100,11 @@ function parseJKS($code){
 			return pi();
 		}
 		function jks_math_random($num1,$num2){
-			return rand($num1,$num2);
+			if($num1>$num2){
+				throw new Exception("First number is higher than second number.");
+			}else{
+				return rand($num1,$num2);
+			}
 		}
 		//Array
 		function jks_arr_prn($arr){
@@ -114,6 +118,25 @@ function parseJKS($code){
 		}
 		function jks_arr_order($array){
 			return sort($array);
+		}
+		//PRCE-functions (RegEx)
+		function jks_reg_repl($regex,$replace,$string){
+			return preg_replace($regex,$replace,$string);
+		}
+		function jks_reg_matc($regex,$string){
+			return preg_match($regex,$string);
+		}
+		function jks_reg_matc_all($regex,$string){
+			return preg_match_all($regex,$string);
+		}
+		function jks_reg_spli($regex,$string){
+			return preg_split($regex,$string);
+		}
+		function jks_reg_filt($regex,$replace,$string){
+			return preg_filter($regex,$replace,$string);
+		}
+		function jks_reg_gre($regex,$array){
+			return preg_grep($regex,$array);
 		}
 		//Get Data
 		function jks_gt_json($url){
@@ -130,7 +153,7 @@ function parseJKS($code){
 		function jks_time_curtim(){
 			return time();
 		}
-		function jks_time_datetext($string,$time){
+		function jks_time_datetext($string,$time = '0'){
 			return date($string,$time);
 		}
 		function jks_time_convert_st($string){
@@ -156,6 +179,22 @@ function parseJKS($code){
 				return substr($string,$start,$end-$start+1);
 			}
 		}
+		function jks_string_c_html($string){
+			return htmlspecialchars($string);
+		}
+		function jks_string_e_html($string){
+			return htmlentities($string);
+		}
+		function jks_string_cd_html($string){
+			return htmlspecialchars_decode($string);
+		}
+		function jks_string_ed_html($string){
+			return html_entity_decode($string);
+		}
+		//Boolean functions
+		function jks_bool_isst($string){
+			return isset($string);
+		}
 	//End JKS functions
   //Cleaning
   $code=trim($code);
@@ -163,7 +202,7 @@ function parseJKS($code){
 }
 //End Parsing
 //Important functions for compiler
-function contains($substring, $string) {
+function jks_contains($substring, $string) {
 	$pos = strpos($string, $substring);
 	if($pos === false) {
 		return false;
