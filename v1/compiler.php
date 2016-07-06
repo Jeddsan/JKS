@@ -43,7 +43,7 @@ function parseJKS($code){
 		//Include array functions
 		if($functions["internal"][$i]=="array"||$functions["internal"][$i]=="array_push"){
 		}else{
-			$code=preg_replace('#('.$functions["internal"][$i].'+[ ]*\(.*\))#i',"no_function()",$code);
+			$code=preg_replace('#('.$functions["internal"][$i].'[ |\n|\r|\t]*\(.*\))#i',"no_function()",$code);
 		}
 	}
 	//print_r($functions);
