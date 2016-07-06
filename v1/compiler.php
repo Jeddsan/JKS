@@ -21,7 +21,6 @@ function parseJKS($code){
 	  $code.=$current_line."\n";
 	}
   }
-
   //Variables
   $code=str_replace("var ","$",$code,$count_set_variables);
   for ($i=0; $i < $count_set_variables; $i++) {
@@ -37,16 +36,15 @@ function parseJKS($code){
 	$current_var=$vars[$i];
 	$code=str_replace(" $current_var"," $$current_var",$code);
   }
-
   //Functions
 	$functions=get_defined_functions();
 	for($i=0;$i<count($functions["internal"]);$i++){
 		//$code=str_replace($functions["internal"][$i]."(","no_function(",$code);
-    if($functions["internal"][$i]=="array"){
-
-    }else{
-  		$code=preg_replace('('.strtolower($functions["internal"][$i]).'+( )*\(.*\)[ ]*;)',"no_function(",$code);
-    }
+		//Include array functions
+		if($functions["internal"][$i]=="array"||$functions["internal"][$i]=="array_push"){
+		}else{
+			$code=preg_replace('#('.$functions["internal"][$i].'+[ ]*\(.*\))#i',"no_function()",$code);
+		}
 	}
 	//print_r($functions);
 	//Null-Function
@@ -111,6 +109,12 @@ function parseJKS($code){
 		function jks_arr_cnt($array){
 			return count($array);
 		}
+		function jks_arr_search($search,$array){
+			return array_search($search,$array);
+		}
+		function jks_arr_order($array){
+			return sort($array);
+		}
 		//Get Data
 		function jks_gt_json($url){
 			$data=file_get_contents($url);
@@ -153,7 +157,6 @@ function parseJKS($code){
 			}
 		}
 	//End JKS functions
-
   //Cleaning
   $code=trim($code);
   return $code;
