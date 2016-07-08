@@ -1,7 +1,7 @@
 <?php
 /*
 Jeddsan JKS Compiler v1
-Version: 1.0.0-1
+Version: 1.0.1-2
 Author: Jeddsan, NoRelect
 Build Date: 08.07.2016
 License: MIT License
@@ -63,7 +63,19 @@ function parseJKS($code){
 			$code=preg_replace('#('.$functions["internal"][$i].'[ |\n|\r|\t]*\([ |\n|\r|\t]*.*\))#i',"no_function()",$code);
 		}
 	}
-	//print_r($functions);
+	//Deactivate all javascripts
+	$code = preg_replace('#(<script\b[^>]*>([\s\S]*?)<\/script>)#i','',$code);
+	
+	//Android functions
+	function jks_android_createEvent($start,$end,$name){
+		if($start!=0||$end!=0||$name!=""){
+			echo "<script>Android.createEvent($start,$end,false,$name);</script>";
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	//Null-Function
 	function no_function(){
 		try{
