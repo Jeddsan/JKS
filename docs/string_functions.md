@@ -1,5 +1,5 @@
 # String functions
-##Modifications
+##Modification functions
 ```php
 string jks_string_repl(string search, string replace, string string);
 ```
@@ -35,7 +35,7 @@ string jks_string_sub(int start, int end, string string);
 ```
 Cut a string from the start position to the end position.
 
-##Convertations
+##Convert functions
 ```php
 string jks_string_html_c(string string);
 ```
