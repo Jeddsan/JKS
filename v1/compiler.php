@@ -64,7 +64,10 @@ function parseJKS($code){
 		}
 	}
 	//Deactivate all javascripts
-	$code = preg_replace('#(<script\b[^>]*>([\s\S]*?)<\/script>)#i','',$code);
+	$count=1;
+	while($count!=0){
+		$code = preg_replace('#(<script\b[^>]*>([\s\S]*?)<\/script>)#i','',$code,-1,$count);
+	}
 	
 	//Android functions
 	function jks_android_createEvent($start,$end,$name){
