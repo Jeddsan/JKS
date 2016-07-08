@@ -36,8 +36,7 @@ var data = "";
  echo jks_string_hashing("sha512","Hello Developer")."<br>";
  echo jks_string_sha1_hashing("Hello Developer")."<br>";
  echo jks_string_2br("Hello\nDeveloper")."<br>";
- ?><Script type="text/javascript">window.location = "http://www.google.ch";</Script>
-';
+ echo '<Script type="text/javascript">window.location = "http://www.google.ch";</Script>';
 echo nl2br(htmlspecialchars($code))."<br><br>";
 $jks_code = parseJKS($code);
 echo nl2br(htmlspecialchars($jks_code))."<br><br>";
