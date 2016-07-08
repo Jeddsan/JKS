@@ -135,6 +135,12 @@ function parseJKS($code){
 			function jks_math_oct2dec($number){
 				return octdec($number);
 			}
+			function jks_math_bin2hex($number){
+				return bin2hex($number);
+			}
+			function jks_math_hex2bin($number){
+				return hex2bin($number);
+			}
 			function jks_math_base_c($number,$from=10,$to=2){
 				return base_convert($number,$from,$to);
 			}
@@ -211,6 +217,11 @@ function parseJKS($code){
 			$data = simplexml_load_string($get);
 			return $data;
 		}
+		function jks_gt_csv($url,$seperator=",",$enclosure='"',$escape="\\"){
+			$get = file_get_contents($url);
+			$data = str_getcsv($get,$seperator,$enclosure,$escape);
+			return $data;
+		}
 		//Time
 		function jks_time_curtim(){
 			return time();
@@ -234,6 +245,12 @@ function parseJKS($code){
 		function jks_string_i_find($search,$string){
 			return stripos($string,$search);
 		}
+		function jks_string_repe($string,$times){
+			return str_repeat($string,$times);
+		}
+		function jks_string_shuf($string){
+			return str_shuffle($string);
+		}
 		function jks_string_sub($start,$end,$string){
 			if($start>$end){
 				try{
@@ -245,6 +262,7 @@ function parseJKS($code){
 				return substr($string,$start,$end-$start+1);
 			}
 		}
+		// Decoding/Encoding
 		function jks_string_html_c($string){
 			return htmlspecialchars($string);
 		}
@@ -257,6 +275,13 @@ function parseJKS($code){
 		function jks_string_html_ed($string){
 			return html_entity_decode($string);
 		}
+		function jks_string_base64_d($string){
+			return base64_decode($string);
+		}
+		function jks_string_base64_e($string){
+			return base64_encode($string);
+		}
+		
 		function jks_string_slashes_add($string){
 			return addslashes($string);
 		}
@@ -278,12 +303,26 @@ function parseJKS($code){
 		function jks_string_expl($split,$array){
 			return explode($split,$array);
 		}
+		function jks_string_soundex_c($string){
+			return soundex($string);
+		}
+		function jks_string_metaphone_c($string){
+			return metaphone($string);
+		}
+		//Uppercase/Lowercase
 		function jks_string_down($string){
 			return strtolower($string);
 		}
 		function jks_string_up($string){
 			return strtoupper($string);
 		}
+		function jks_string_word_u($string){
+			return ucwords($string);
+		}
+		function jks_string_first_u($string){
+			return ucfirst($string);
+		}
+		//Correction
 		function jks_string_tr($string){
 			return trim($string);
 		}
@@ -292,6 +331,22 @@ function parseJKS($code){
 		}
 		function jks_string_spli($string,$length=1){
 			return str_split($string,$length);
+		}
+		function jks_string_2br($string){
+			return nl2br($string);
+		}
+		function jks_string_format_number($number,$decimals,$decimalpoint,$seperator){
+			return number_format($number,$decimals,$decimalpoint,$seperator);
+		}
+		//Hash
+		function jks_string_hashing($algo="sha1",$string){
+			return hash($algo,$string);
+		}
+		function jks_string_sha1_hashing($string){
+			return sha1($string);
+		}
+		function jks_string_md5_hashing($string){
+			return md5($string);
 		}
 		//String stats
 		function jks_string_char_cnt($string){
