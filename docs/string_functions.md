@@ -1,4 +1,5 @@
 # String functions
+##Modifications
 ```php
 string jks_string_repl(string search, string replace, string string);
 ```
@@ -34,6 +35,7 @@ string jks_string_sub(int start, int end, string string);
 ```
 Cut a string from the start position to the end position.
 
+##Convertations
 ```php
 string jks_string_html_c(string string);
 ```
@@ -53,3 +55,13 @@ Encode a string in the htmlentities format.
 string jks_string_html_ed(string string);
 ```
 Decode a string in the htmlentities format.
+
+```php
+string jks_string_base64_d(string string);
+```
+Decode a string in the BASE64 format.
+
+```php
+string jks_string_base64_e(string string);
+```
+Encode a string in the BASE64 format.
