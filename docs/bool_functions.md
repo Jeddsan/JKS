@@ -77,6 +77,6 @@ string jks_bool_infinite_is(number variable);
 Returns if the variable is infinite.
 
 ```php
-string jks_bool_finite_is(number variable);
+string jks_bool_nan_is(number variable);
 ```
 Returns if the variable is NaN.
