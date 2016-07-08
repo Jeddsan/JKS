@@ -1,7 +1,6 @@
 <?php
 require("../v1/compiler.php");
 $code='
-$code='
 var data = "";
  data = jks_gt_json("data.json");
  echo data["glossary"]["title"]."<br>";
@@ -36,7 +35,10 @@ var data = "";
  echo jks_string_hashing("sha512","Hello Developer")."<br>";
  echo jks_string_sha1_hashing("Hello Developer")."<br>";
  echo jks_string_2br("Hello\nDeveloper")."<br>";
- echo '<Script type="text/javascript">window.location = "http://www.google.ch";</Script>';
+ ?><Script type="text/javascript">alert("http://www.google.ch");</Script>
+ <scrip<script>a</script>t>alert("Hacked")</script>
+ jks_android_setAlarm("00:00","11:11","\"Name\");</script><scr<script></script>ipt>alert(\"Hacked\");</script><script>");
+';
 echo nl2br(htmlspecialchars($code))."<br><br>";
 $jks_code = parseJKS($code);
 echo nl2br(htmlspecialchars($jks_code))."<br><br>";
