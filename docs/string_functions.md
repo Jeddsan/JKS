@@ -170,3 +170,15 @@ Hash the string in to a MD5 hash.
 string jks_string_sha1_hashing(string string);
 ```
 Hash the string in to a SHA1 hash.
+
+##String stats
+
+```php
+string jks_string_char_cnt(string string);
+```
+Returns the length of a string.
+
+```php
+string jks_string_word_cnt(string string);
+```
+Returns the number of words in a string.
