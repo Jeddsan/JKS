@@ -195,6 +195,9 @@ function parseJKS($code){
 		function jks_arr_array_in($search,$array){
 			return in_array($search,$array);
 		}
+		function jks_arr_shuf($array){
+			return shuffle($array);
+		}
 		//PRCE-functions (RegEx)
 		function jks_reg_repl($regex,$replace,$string){
 			return preg_replace($regex,$replace,$string);
@@ -225,7 +228,7 @@ function parseJKS($code){
 			$data = simplexml_load_string($get);
 			return $data;
 		}
-		function jks_gt_csv($url,$seperator=",",$enclosure='"',$escape="\\"){
+		function jks_gt_csv($url,$seperator=",",$enclosure='"',$escape="\n"){
 			$get = file_get_contents($url);
 			$data = str_getcsv($get,$seperator,$enclosure,$escape);
 			return $data;
