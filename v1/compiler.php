@@ -1,4 +1,12 @@
 <?php
+/*
+Jeddsan JKS Compiler v1
+Version: 1.0.0-1
+Author: Jeddsan, NoRelect
+Build Date: 08.07.2016
+License: MIT License
+*/
+
 //Error Exception
 class JKSParseError extends Exception {
   public function errorMessage() {
@@ -281,7 +289,7 @@ function parseJKS($code){
 		function jks_string_base64_e($string){
 			return base64_encode($string);
 		}
-
+		
 		function jks_string_slashes_add($string){
 			return addslashes($string);
 		}
