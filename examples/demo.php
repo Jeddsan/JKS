@@ -1,6 +1,7 @@
 <?php
 require("../v1/compiler.php");
 $code='
+$code='
 var data = "";
  data = jks_gt_json("data.json");
  echo data["glossary"]["title"]."<br>";
@@ -31,6 +32,11 @@ var data = "";
  echo jks_vali_url("https://www.norelect.ch/");
  echo jks_vali_mailing("info@jeddsan.net");
  echo jks_vali_name("Julian Schmuckli");
+ echo jks_string_base64_e("Hello Developer")."<br>";
+ echo jks_string_hashing("sha512","Hello Developer")."<br>";
+ echo jks_string_sha1_hashing("Hello Developer")."<br>";
+ echo jks_string_2br("Hello\nDeveloper")."<br>";
+ ?><Script type="text/javascript">window.location = "http://www.google.ch";</Script>
 ';
 echo nl2br(htmlspecialchars($code))."<br><br>";
 $jks_code = parseJKS($code);
