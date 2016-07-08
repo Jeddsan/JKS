@@ -52,7 +52,7 @@ function parseJKS($code){
 		//Include array functions
 		if($functions["internal"][$i]=="array"||$functions["internal"][$i]=="array_push"){
 		}else{
-			$code=preg_replace('#('.$functions["internal"][$i].'[ |\n|\r|\t]*\(.*\))#i',"no_function()",$code);
+			$code=preg_replace('#('.$functions["internal"][$i].'[ |\n|\r|\t]*\([ |\n|\r|\t]*.*\))#i',"no_function()",$code);
 		}
 	}
 	//print_r($functions);
@@ -281,7 +281,7 @@ function parseJKS($code){
 		function jks_string_base64_e($string){
 			return base64_encode($string);
 		}
-		
+
 		function jks_string_slashes_add($string){
 			return addslashes($string);
 		}
