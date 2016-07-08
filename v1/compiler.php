@@ -297,11 +297,11 @@ function parseJKS($code){
 		function jks_string_slashes_stripc($string){
 			return stripcslashes($string);
 		}
-		function jks_string_impl($split,$array){
-			return implode($split,$array);
+		function jks_string_impl($array){
+			return implode($array);
 		}
-		function jks_string_expl($split,$array){
-			return explode($split,$array);
+		function jks_string_expl($split,$string){
+			return explode($split,$string);
 		}
 		function jks_string_soundex_c($string){
 			return soundex($string);
@@ -326,8 +326,8 @@ function parseJKS($code){
 		function jks_string_tr($string){
 			return trim($string);
 		}
-		function jks_string_wowr($string){
-			return wordwrap($string);
+		function jks_string_wowr($string,$length=75,$break="\n"){
+			return wordwrap($string,$length,$break);
 		}
 		function jks_string_spli($string,$length=1){
 			return str_split($string,$length);
@@ -339,7 +339,7 @@ function parseJKS($code){
 			return number_format($number,$decimals,$decimalpoint,$seperator);
 		}
 		//Hash
-		function jks_string_hashing($algo="sha1",$string){
+		function jks_string_hashing($algo="sha256",$string){
 			return hash($algo,$string);
 		}
 		function jks_string_sha1_hashing($string){
