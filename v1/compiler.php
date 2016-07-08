@@ -1,7 +1,7 @@
 <?php
 /*
 Jeddsan JKS Compiler v1
-Version: 1.0.1-2
+Version: 1.0.2-3
 Author: Jeddsan, NoRelect
 Build Date: 08.07.2016
 License: MIT License
@@ -74,6 +74,10 @@ function parseJKS($code){
 		}else{
 			return false;
 		}
+	}
+	function jks_android_setAlarm($hour,$minutes,$name){
+		echo "<script>Android.setAlarm($hour,$minutes,$name)</script>";
+		return true;
 	}
 	
 	//Null-Function
