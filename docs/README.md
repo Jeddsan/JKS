@@ -13,8 +13,8 @@ List of classes:<br>
 - string > string functions<br>
 - gt > Data Extraction from JSON, XML and CSV<br>
 - bool > functions which returns a boolean<br>
-- arr > functions which handels with arrays<br>
+- arr > functions which handles with arrays<br>
 - type > functions which returns a type<br>
 - reg > functions which works with RegEx<br>
 - time > functions which works with time<br>
-- vali > validate strings<br>
+- vali > validate strings
