@@ -131,3 +131,15 @@ Returns a string, where all word beginnig chars are big.
 string jks_string_first_u(string string);
 ```
 Returns a string, where only the first character are big.
+
+##Correction functions
+
+```php
+string jks_string_tr(string string);
+```
+Trims a string, to remove the left and right end whitespaces.
+
+```php
+string jks_string_wowr(string string, int length, string break);
+```
+Wordwraps a string after a length with a break.
