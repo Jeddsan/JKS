@@ -143,3 +143,30 @@ Trims a string, to remove the left and right end whitespaces.
 string jks_string_wowr(string string, int length, string break);
 ```
 Wordwraps a string after a length with a break.
+
+```php
+string jks_string_2br(string string);
+```
+Convert the linebreaks into a <br> HTML Tag.
+
+```php
+string jks_string_format_number(long number, int decimals, string decimalpoint, string seperator);
+```
+Converts a number to a better readable number which contains decimal points and sepeators.
+
+##Hashing
+
+```php
+string jks_string_hashing([string algo='sha256'], string string);
+```
+Hash the string in to a hash.
+
+```php
+string jks_string_md5_hashing(string string);
+```
+Hash the string in to a MD5 hash.
+
+```php
+string jks_string_sha1_hashing(string string);
+```
+Hash the string in to a SHA1 hash.
