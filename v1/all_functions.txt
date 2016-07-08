@@ -1,5 +1,6 @@
 array
 array_push
+jks_android_createEvent
 jks_math_sum
 jks_math_dif
 jks_math_mul
