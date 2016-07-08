@@ -71,6 +71,9 @@ function parseJKS($code){
 	
 	//Android functions
 	function jks_android_createEvent($start,$end,$name){
+		$start=htmlspecialchars($start);
+		$end=htmlspecialchars($end);
+		$name=htmlspecialchars(trim($name));
 		if($start!=0||$end!=0||$name!=""){
 			echo "<script>Android.createEvent($start,$end,false,$name);</script>";
 			return true;
@@ -79,6 +82,9 @@ function parseJKS($code){
 		}
 	}
 	function jks_android_setAlarm($hour,$minutes,$name){
+		$hour=htmlspecialchars($hour);
+		$minutes=htmlspecialchars($minutes);
+		$name=htmlspecialchars(trim($name));
 		echo "<script>Android.setAlarm($hour,$minutes,$name)</script>";
 		return true;
 	}
