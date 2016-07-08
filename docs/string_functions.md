@@ -147,7 +147,7 @@ Wordwraps a string after a length with a break.
 ```php
 string jks_string_2br(string string);
 ```
-Convert the linebreaks into a <br> HTML Tag.
+Convert the linebreaks into a &lt;br&gt; HTML Tag.
 
 ```php
 string jks_string_format_number(long number, int decimals, string decimalpoint, string seperator);
