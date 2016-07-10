@@ -88,6 +88,11 @@ function parseJKS($code){
 		echo "<script>Android.setAlarm($hour,$minutes,$name)</script>";
 		return true;
 	}
+	function jks_android_setBrightness($value){
+		$name=htmlspecialchars(trim($value));
+		echo "<script>Android.setBrightness($value)</script>";
+		return true;
+	}
 	
 	//Null-Function
 	function no_function(){
