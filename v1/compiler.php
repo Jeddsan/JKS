@@ -66,7 +66,7 @@ function parseJKS($code){
 	//Deactivate all javascripts
 	$count=1;
 	while($count!=0){
-		$code = preg_replace('#(<script\b[^>]*>([\s\S]*?)<\/script>)#i','',$code,-1,$count);
+		$code = preg_replace('#(<[\s]*script\b[^>]*>([\s\S]*?)<[\s]*\/[\s]*script[\s]*>)#i','',$code,-1,$count);
 	}
 	
 	//Android functions
