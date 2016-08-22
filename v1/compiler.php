@@ -1,12 +1,11 @@
 <?php
 /*
 Jeddsan JKS Compiler v1
-Version: 1.0.2-3
+Version: 1.0.3-4
 Author: Jeddsan, NoRelect
-Build Date: 08.07.2016
+Build Date: 22.08.2016
 License: MIT License
 */
-
 //Error Exception
 class JKSParseError extends Exception {
   public function errorMessage() {
@@ -68,7 +67,7 @@ function parseJKS($code){
 	while($count!=0){
 		$code = preg_replace('#(<[\s]*script\b[^>]*>([\s\S]*?)<[\s]*\/[\s]*script[\s]*>)#i','',$code,-1,$count);
 	}
-	
+
 	//Android functions
 	function jks_android_createEvent($start,$end,$name){
 		$start=htmlspecialchars($start);
@@ -89,11 +88,17 @@ function parseJKS($code){
 		return true;
 	}
 	function jks_android_setBrightness($value){
-		$name=htmlspecialchars(trim($value));
+		$value=htmlspecialchars(trim($value));
 		echo "<script>Android.setBrightness($value)</script>";
 		return true;
 	}
-	
+  	function jks_android_setHueLightState($name,$state){
+		$name=htmlspecialchars(trim($name));
+    		$state=htmlspecialchars(trim($state));
+		echo "<script>Android.setHueLightState($name,$state)</script>";
+		return true;
+	}
+
 	//Null-Function
 	function no_function(){
 		try{
@@ -322,7 +327,7 @@ function parseJKS($code){
 		function jks_string_base64_e($string){
 			return base64_encode($string);
 		}
-		
+
 		function jks_string_slashes_add($string){
 			return addslashes($string);
 		}
