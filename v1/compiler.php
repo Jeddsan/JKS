@@ -1,9 +1,9 @@
 <?php
 /*
 Jeddsan JKS Compiler v1
-Version: 1.0.3-4
+Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 22.08.2016
+Build Date: 25.08.2016
 License: MIT License
 */
 //Error Exception
@@ -84,7 +84,7 @@ function parseJKS($code){
 		$hour=htmlspecialchars($hour);
 		$minutes=htmlspecialchars($minutes);
 		$name=htmlspecialchars(trim($name));
-		echo "<script>Android.setAlarm($hour,$minutes,$name)</script>";
+		echo "<script>Android.setAlarm($hour,$minutes,'$name')</script>";
 		return true;
 	}
 	function jks_android_setBrightness($value){
@@ -92,11 +92,15 @@ function parseJKS($code){
 		echo "<script>Android.setBrightness($value)</script>";
 		return true;
 	}
-  	function jks_android_setHueLightState($name,$state){
+  function jks_android_setHueLightState($name,$state){
 		$name=htmlspecialchars(trim($name));
-    		$state=htmlspecialchars(trim($state));
-		echo "<script>Android.setHueLightState($name,$state)</script>";
-		return true;
+    $state=htmlspecialchars(trim($state));
+		return "<script>Android.setHueLightState('$name',$state)</script>";
+	}
+  function jks_android_setHueLightDim($name,$number){
+		$name=htmlspecialchars(trim($name));
+    $number=htmlspecialchars(trim($number));
+		return "<script>Android.setHueLightDim('$name',$number)</script>";
 	}
 
 	//Null-Function
