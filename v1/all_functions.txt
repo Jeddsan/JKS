@@ -67,6 +67,10 @@ jks_string_html_cd
 jks_string_html_ed
 jks_string_base64_d
 jks_string_base64_e
+jks_string_utf8_d
+jks_string_utf8_e
+jks_string_url_d
+jks_string_url_e
 jks_string_slashes_add
 jks_string_slashes_addc
 jks_string_slashes_remove
