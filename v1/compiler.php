@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 03.09.2016
+Build Date: 04.09.2016
 License: MIT License
 */
 //Error Exception
@@ -37,6 +37,9 @@ function parseJKS($code){
 	  $code.=$current_line."\n";
 	}
   }
+  //Remove <?php and >
+  $code = str_ireplace("<?php","",$code);
+  $code = str_ireplace("?>","",$code);
   //Variables
   /*$code=str_replace("var ","$",$code,$count_set_variables);
   for ($i=0; $i < $count_set_variables; $i++) {
