@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 04.09.2016
+Build Date: 03.09.2016
 License: MIT License
 */
 //Error Exception
@@ -333,6 +333,18 @@ function parseJKS($code){
 		}
 		function jks_string_base64_e($string){
 			return base64_encode($string);
+		}
+    function jks_string_utf8_d($string){
+			return utf8_decode($string);
+		}
+    function jks_string_utf8_e($string){
+			return utf8_encode($string);
+		}
+    function jks_string_url_d($string){
+			return urldecode($string);
+		}
+    function jks_string_url_e($string){
+			return urlencode($string);
 		}
 
 		function jks_string_slashes_add($string){
