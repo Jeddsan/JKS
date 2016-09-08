@@ -31,6 +31,7 @@ jks_math_bin2hex
 jks_math_hex2bin
 jks_math_base_c
 jks_math_random
+jks_math_modulo
 jks_arr_prn
 jks_arr_cnt
 jks_arr_search
