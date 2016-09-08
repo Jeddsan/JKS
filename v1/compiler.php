@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 03.09.2016
+Build Date: 08.09.2016
 License: MIT License
 */
 //Error Exception
@@ -32,14 +32,21 @@ function parseJKS($code){
 	jks_contains("include",$current_line)||
 	jks_contains("include_once",$current_line)||
 	jks_contains("require",$current_line)||
-	jks_contains("require_once",$current_line)){
+	jks_contains("require_once",$current_line)||
+  jks_contains("fwrite",$current_line)||
+  jks_contains("fopen",$current_line)){
 	}else{
 	  $code.=$current_line."\n";
 	}
   }
   //Remove <?php and >
-  $code = str_ireplace("<?php","",$code);
-  $code = str_ireplace("?>","",$code);
+  do{
+    $code = str_ireplace("<?php","",$code,$times1);
+    $code = str_ireplace("?>","",$code,$times2);
+  }while($times1>0||$times2>0);
+  do{
+    $code = str_ireplace("<?","",$code,$times3);
+  }while($times3>0);
   //Variables
   /*$code=str_replace("var ","$",$code,$count_set_variables);
   for ($i=0; $i < $count_set_variables; $i++) {
