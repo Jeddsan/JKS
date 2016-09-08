@@ -163,6 +163,9 @@ function parseJKS($code){
 		function jks_math_expo($num){
 			return exp($num);
 		}
+    function jks_math_modulo($x,$y){
+			return fmod($x,$y);
+		}
 		function jks_math_min($array){
 			return min($array);
 		}
