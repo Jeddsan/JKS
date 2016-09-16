@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 08.09.2016
+Build Date: 16.09.2016
 License: MIT License
 */
 //Error Exception
@@ -111,6 +111,15 @@ function parseJKS($code){
 		$name=htmlspecialchars(trim($name));
     $number=htmlspecialchars(trim($number));
 		return "<script>Android.setHueLightDim('$name',$number)</script>";
+	}
+  function jks_android_setMyStromState($name,$number){
+		$name=htmlspecialchars(trim($name));
+    $number=htmlspecialchars(trim($number));
+		return "<script>Android.setMyStromState('$name',$number)</script>";
+	}
+  function jks_android_setMyStromToggle($name){
+		$name=htmlspecialchars(trim($name));
+		return "<script>Android.setMyStromToggle('$name')</script>";
 	}
 
 	//Null-Function
