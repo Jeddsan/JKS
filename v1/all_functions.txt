@@ -5,6 +5,8 @@ jks_android_setAlarm
 jks_android_setBrightness
 jks_android_setHueLightState
 jks_android_setHueLightDim
+jks_android_setMyStromState
+jks_android_setMyStromToggle
 jks_math_sum
 jks_math_dif
 jks_math_mul
