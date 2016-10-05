@@ -3,15 +3,14 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 16.09.2016
+Build Date: 05.10.2016
 License: MIT License
 */
 //Error Exception
 class JKSParseError extends Exception {
   public function errorMessage() {
     //error message
-    $errorMsg = '<br><br><b>JKS Parse Error:</b> Error on line '.$this->getLine().' in '.$this->getFile()
-    .': <b>'.$this->getMessage().'</b><br><br>';
+    $errorMsg = '<br><br><b>JKS Parse Error:</b> Fatal error: <b>'.$this->getMessage().'</b><br><br>';
     return $errorMsg;
   }
 }
@@ -69,7 +68,7 @@ function parseJKS($code){
 		//Include array functions
 		if($functions["internal"][$i]=="array"||$functions["internal"][$i]=="array_push"){
 		}else{
-			$code=preg_replace('#('.$functions["internal"][$i].'[ |\n|\r|\t]*\([ |\n|\r|\t]*.*\))#i',"no_function()",$code);
+			$code=preg_replace('#('.$functions["internal"][$i].'[ |\n|\r|\t]*\([ |\n|\r|\t]*.*?\))#si',"no_function()",$code);
 		}
 	}
 	//Deactivate all javascripts
