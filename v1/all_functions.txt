@@ -57,6 +57,7 @@ jks_gt_csv
 jks_time_curtim
 jks_time_datetext
 jks_time_string_c
+jks_time_convert
 jks_string_repl
 jks_string_i_repl
 jks_string_find
