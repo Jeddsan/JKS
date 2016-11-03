@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 05.10.2016
+Build Date: 03.11.2016
 License: MIT License
 */
 //Error Exception
@@ -303,6 +303,118 @@ function parseJKS($code){
 		function jks_time_string_c($string){
 			return strtotime($string);
 		}
+    function jks_time_convert($message){
+      $string = strtolower(trim($message));
+      $string = str_ireplace("am","",$string);
+      $string = str_ireplace("an","",$string);
+      $string = str_ireplace("vom","",$string);
+      $string = str_ireplace("von","",$string);
+      $string = str_ireplace("um","",$string);
+      $string = str_ireplace("den","",$string);
+      $string = str_ireplace(",","",$string);
+      //Andere
+      $string = str_ireplace("heute","today",$string);
+      $string = str_ireplace("überüberübermorgen",date("d.m.Y",time()+(86400*4)),$string);
+      $string = str_ireplace("vorvorvorgestern",date("d.m.Y",time()-(86400*4)),$string);
+      $string = str_ireplace("überübermorgen",date("d.m.Y",time()+(86400*3)),$string);
+      $string = str_ireplace("vorvorgestern",date("d.m.Y",time()-(86400*3)),$string);
+      $string = str_ireplace("übermorgen",date("d.m.Y",time()+(86400*2)),$string);
+      $string = str_ireplace("vorgestern",date("d.m.Y",time()-(86400*2)),$string);
+      $string = str_ireplace("morgen","tomorrow",$string);
+      $string = str_ireplace("gestern","yesterday",$string);
+      $string = str_ireplace("nächsten montag","next monday",$string);
+      $string = str_ireplace("nächsten dienstag","next tuesday",$string);
+      $string = str_ireplace("nächsten mittwoch","next wednesday",$string);
+      $string = str_ireplace("nächsten donnerstag","next thursday",$string);
+      $string = str_ireplace("nächsten freitag","next friday",$string);
+      $string = str_ireplace("nächsten samstag","next saturday",$string);
+      $string = str_ireplace("nächsten sonntag","next sunday",$string);
+
+      $string = str_ireplace("letzter montag","last monday",$string);
+      $string = str_ireplace("letzter dienstag","last tuesday",$string);
+      $string = str_ireplace("letzter mittwoch","last wednesday",$string);
+      $string = str_ireplace("letzter donnerstag","last thursday",$string);
+      $string = str_ireplace("letzter freitag","last friday",$string);
+      $string = str_ireplace("letzter samstag","last saturday",$string);
+      $string = str_ireplace("letzter sonntag","last sunday",$string);
+
+      $string = str_ireplace("letzten montag","last monday",$string);
+      $string = str_ireplace("letzten dienstag","last tuesday",$string);
+      $string = str_ireplace("letzten mittwoch","last wednesday",$string);
+      $string = str_ireplace("letzten donnerstag","last thursday",$string);
+      $string = str_ireplace("letzten freitag","last friday",$string);
+      $string = str_ireplace("letzten samstag","last saturday",$string);
+      $string = str_ireplace("letzten sonntag","last sunday",$string);
+      $string = str_ireplace("ersten","1.",$string);
+      $string = str_ireplace("zweiten","2.",$string);
+      $string = str_ireplace("dritten","3.",$string);
+      //Wochentage
+      $string = str_ireplace("montag","monday",$string);
+      $string = str_ireplace("dienstag","thuesday",$string);
+      $string = str_ireplace("mittwoch","wednesday",$string);
+      $string = str_ireplace("donnerstag","thursday",$string);
+      $string = str_ireplace("freitag","friday",$string);
+      $string = str_ireplace("samstag","saturday",$string);
+      $string = str_ireplace("sonntag","sunday",$string);
+      //Monate
+      $string = str_ireplace("januar","january",$string);
+      $string = str_ireplace("februar","february",$string);
+      $string = str_ireplace("märz","march",$string);
+      $string = str_ireplace("mai","may",$string);
+      $string = str_ireplace("april","april",$string);
+      $string = str_ireplace("mai","may",$string);
+      $string = str_ireplace("juni","june",$string);
+      $string = str_ireplace("juli","july",$string);
+      $string = str_ireplace("august","august",$string);
+      $string = str_ireplace("september","september",$string);
+      $string = str_ireplace("oktober","october",$string);
+      $string = str_ireplace("november","november",$string);
+      $string = str_ireplace("dezember","december",$string);
+      //Events
+      $string = str_ireplace("weihnachten","24. december",$string);
+      $string = str_ireplace("silvester","31. december",$string);
+      $string = str_ireplace("sylvester","31. december",$string);
+      $string = str_ireplace("neujahr","1. january",$string);
+      $string = str_ireplace("berchtoldstag","2. january",$string);
+      $string = str_ireplace("tag der arbeit","1. may",$string);
+      $string = str_ireplace("stephanstag","26. december",$string);
+      $string = str_ireplace("stefanstag","26. december",$string);
+      $string = str_ireplace("nationalfeiertag","1. august",$string);
+      $string = str_ireplace("nationalfeiertag deutschland","3. oktober",$string);
+      //Teiltag
+      $string = str_ireplace("morgen","00:00",$string);
+      $string = str_ireplace("mittag","04:00",$string);
+      $string = str_ireplace("mittags","04:00",$string);
+      $string = str_ireplace("nachmittags","07:00",$string);
+      $string = str_ireplace("frühabend","09:00",$string);
+      $string = str_ireplace("abend","10:00",$string);
+      $string = str_ireplace("abends","10:00",$string);
+      $string = str_ireplace("spätabend","12:00",$string);
+      $string = str_ireplace("nacht","15:00",$string);
+      $string = str_ireplace("nachts","15:00",$string);
+      //Vervollständigung
+      $string = str_ireplace("uhr uhr","uhr",$string);
+      $string = str_ireplace(" uhr ",":",$string);
+      $string = str_ireplace(" uhr",":00",$string);
+      /*if(contains(date("Y"),$string)||contains(date("Y")+1,$string||contains(date("Y")+2,$string)||contains(date("Y")-1,$string)||contains(date("Y")+3,$string)||contains(date("Y")+4,$string))||contains(date("Y")+5,$string)){
+      }else{
+        $string = str_ireplace("january","january ".date("Y"),$string);
+        $string = str_ireplace("february","february ".date("Y"),$string);
+        $string = str_ireplace("march","march ".date("Y"),$string);
+        $string = str_ireplace("may","may ".date("Y"),$string);
+        $string = str_ireplace("april","april ".date("Y"),$string);
+        $string = str_ireplace("may","may ".date("Y"),$string);
+        $string = str_ireplace("june","june ".date("Y"),$string);
+        $string = str_ireplace("july","july ".date("Y"),$string);
+        $string = str_ireplace("august","august ".date("Y"),$string);
+        $string = str_ireplace("september","september ".date("Y"),$string);
+        $string = str_ireplace("october","october ".date("Y"),$string);
+        $string = str_ireplace("november","november ".date("Y"),$string);
+        $string = str_ireplace("december","december ".date("Y"),$string);
+      }*/
+      $timestamp = strtotime($string);
+      return $timestamp;
+    }
 		//String Modifications
 		function jks_string_repl($search,$replace,$string){
 			return str_replace($search,$replace,$string);
