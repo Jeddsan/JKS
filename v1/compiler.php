@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 03.11.2016
+Build Date: 05.11.2016
 License: MIT License
 */
 //Error Exception
@@ -278,9 +278,17 @@ function parseJKS($code){
 			return preg_grep($regex,$array);
 		}
 		//Get Data
-		function jks_gt_json($url){
-			$data=file_get_contents($url);
-			$data=json_decode($data,true);
+		function jks_gt_json($url,$body=array()){
+      $options = array(
+          'http' => array(
+              'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+              'method'  => 'POST',
+              'content' => http_build_query($body)
+          )
+      );
+      $context  = stream_context_create($options);
+      $data = file_get_contents($url, false, $context);
+			$data = json_decode($data,true);
 			return $data;
 		}
 		function jks_gt_xml($url){
@@ -303,6 +311,33 @@ function parseJKS($code){
 		function jks_time_string_c($string){
 			return strtotime($string);
 		}
+    function jks_time_datespeak_ge($timestamp,$format="d m y"){
+      $day = date("j",$timestamp);
+      $month = date("n",$timestamp);
+      $year = date("Y",$timestamp);
+      $weak_day = date("w",$timestamp);
+      if($day==1){
+        $day="ersten";
+      }elseif($day>=2&&$day<=19){
+        $day=$day."ten";
+      }else{
+        $day=$day."sten";
+      }
+      $arr_month=array("","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
+      $month=$arr_month[$month];
+      if($year<2000){
+        $year = $year[0].$year[1]." ".$year[2].$year[3];
+      }
+
+      $arr_days = array("Sonntag","Montag","Dienstag","Mittwoch","Freitag","Samstag");
+      $weak_day = $arr_days[$weak_day];
+
+      $result = str_ireplace("d",$day,$format);
+      $result = str_ireplace("m",$month,$result);
+      $result = str_ireplace("y",$year,$result);
+      $result = str_ireplace("w",$weak_day,$result);
+      return $result;
+    }
     function jks_time_convert($message){
       $string = strtolower(trim($message));
       $string = str_ireplace("am","",$string);
