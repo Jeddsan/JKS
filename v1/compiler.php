@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 05.11.2016
+Build Date: 06.11.2016
 License: MIT License
 */
 //Error Exception
@@ -470,15 +470,7 @@ function parseJKS($code){
 			return str_shuffle($string);
 		}
 		function jks_string_sub($start,$end,$string){
-			if($start>$end){
-				try{
-					throw new JKSParseError("Start is higher than end.");
-				}catch(JKSParseError $e){
-					echo $e->errorMessage();
-				}
-			}else{
-				return substr($string,$start,$end-$start+1);
-			}
+			return substr($string,$start,$end-$start+1);
 		}
 		// Decoding/Encoding
 		function jks_string_html_c($string){
