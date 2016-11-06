@@ -119,5 +119,6 @@ jks_bool_c_v
 jks_vali_url
 jks_vali_mailing
 jks_vali_name
+jks_url_open_window
 jks_type_get
 jks_string_contains
