@@ -651,6 +651,12 @@ function parseJKS($code){
 				return true;
 			}
 		}
+    function jks_url_open_window($url,$delay=0,$type="_blank"){
+      $url=addslashes(trim(htmlspecialchars($url)));
+      $type=addslashes(trim(htmlspecialchars($type)));
+      $delay=addslashes(trim(htmlspecialchars($delay)));
+      return "<script>setTimeout(function() { var win = window.open('$url', '$type'); win.focus(); }, $delay);</script>";
+    }
 		//Other functions
 		function jks_type_get($string){
 			return gettype($string);
