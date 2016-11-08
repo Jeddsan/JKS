@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 06.11.2016
+Build Date: 08.11.2016
 License: MIT License
 */
 //Error Exception
@@ -278,11 +278,20 @@ function parseJKS($code){
 			return preg_grep($regex,$array);
 		}
 		//Get Data
-		function jks_gt_json($url,$body=array()){
+		function jks_gt_json($url,$body=array(),$method="POST"){
+      switch ($method) {
+        case 'POST':
+        case 'GET':
+        case 'PUT':
+          break;
+        default:
+          throw new JKSParseError("Method is not known", 1);
+          break;
+      }
       $options = array(
           'http' => array(
               'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-              'method'  => 'POST',
+              'method'  => "$method",
               'content' => http_build_query($body)
           )
       );
