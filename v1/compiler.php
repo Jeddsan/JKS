@@ -481,6 +481,12 @@ function parseJKS($code){
 		function jks_string_sub($start,$end,$string){
 			return substr($string,$start,$end-$start+1);
 		}
+    function jks_string_char($ascii){
+			return chr($ascii);
+		}
+    function jks_string_char_o($string){
+			return ord($string);
+		}
 		// Decoding/Encoding
 		function jks_string_html_c($string){
 			return htmlspecialchars($string);
