@@ -66,6 +66,8 @@ jks_string_i_find
 jks_string_repe
 jks_string_shuf
 jks_string_sub
+jks_string_char
+jks_string_char_o
 jks_string_html_c
 jks_string_html_e
 jks_string_html_cd
