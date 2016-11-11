@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 08.11.2016
+Build Date: 11.11.2016
 License: MIT License
 */
 //Error Exception
@@ -488,6 +488,12 @@ function parseJKS($code){
 			return ord($string);
 		}
 		// Decoding/Encoding
+    function jks_string_json_d($string){
+      return json_decode($string);
+    }
+    function jks_string_json_e($string){
+      return json_encode($string);
+    }
 		function jks_string_html_c($string){
 			return htmlspecialchars($string);
 		}
