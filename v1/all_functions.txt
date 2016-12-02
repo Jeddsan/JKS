@@ -40,6 +40,7 @@ jks_arr_cnt
 jks_arr_search
 jks_arr_order
 jks_arr_keys
+jks_arr_key_gt
 jks_arr_values
 jks_arr_diff
 jks_arr_diff_assoc
