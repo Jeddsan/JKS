@@ -35,6 +35,7 @@ jks_math_base_c
 jks_math_random
 jks_math_modulo
 jks_arr_prn
+jks_arr_dump
 jks_arr_cnt
 jks_arr_search
 jks_arr_order
@@ -124,3 +125,5 @@ jks_vali_name
 jks_url_open_window
 jks_type_get
 jks_string_contains
+jks_data_load
+jks_data_save
