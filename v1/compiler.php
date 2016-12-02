@@ -243,6 +243,9 @@ function parseJKS($code){
 		function jks_arr_keys($array){
 			return array_keys($array);
 		}
+    function jks_arr_key_gt($array){
+			return key($array);
+		}
 		function jks_arr_values($array){
 			return array_values($array);
 		}
