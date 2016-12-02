@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 11.11.2016
+Build Date: 03.12.2016
 License: MIT License
 */
 //Error Exception
@@ -227,6 +227,9 @@ function parseJKS($code){
 		//Array
 		function jks_arr_prn($arr){
 			return print_r($arr);
+		}
+    function jks_arr_dump($arr){
+			return var_dump($arr);
 		}
 		function jks_arr_cnt($array){
 			return count($array);
@@ -466,11 +469,11 @@ function parseJKS($code){
 		function jks_string_i_repl($search,$replace,$string){
 			return str_ireplace($search,$replace,$string);
 		}
-		function jks_string_find($search,$string){
-			return strpos($string,$search);
+		function jks_string_find($search,$string,$offset=0){
+			return strpos($string,$search,$offset);
 		}
-		function jks_string_i_find($search,$string){
-			return stripos($string,$search);
+		function jks_string_i_find($search,$string,$offset=0){
+			return stripos($string,$search,$offset);
 		}
 		function jks_string_repe($string,$times){
 			return str_repeat($string,$times);
@@ -543,8 +546,12 @@ function parseJKS($code){
 		function jks_string_impl($array){
 			return implode($array);
 		}
-		function jks_string_expl($split,$string){
-			return explode($split,$string);
+		function jks_string_expl($split,$string,$limit=null){
+      if($limit==null){
+  			return explode($split,$string);
+      }else{
+        return explode($split,$string,$limit);
+      }
 		}
 		function jks_string_soundex_c($string){
 			return soundex($string);
