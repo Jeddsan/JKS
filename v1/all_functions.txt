@@ -120,6 +120,7 @@ jks_bool_finite_is
 jks_bool_infinite_is
 jks_bool_nan_is
 jks_bool_c_v
+jks_bool_is_positive
 jks_vali_url
 jks_vali_mailing
 jks_vali_name
