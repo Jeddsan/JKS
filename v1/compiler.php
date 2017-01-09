@@ -3,7 +3,7 @@
 Jeddsan JKS Compiler v1
 Version: 1
 Author: Jeddsan, NoRelect
-Build Date: 03.12.2016
+Build Date: 09.01.2017
 License: MIT License
 */
 //Error Exception
@@ -309,7 +309,8 @@ function parseJKS($code){
 		function jks_gt_xml($url){
 			$get = file_get_contents($url);
 			$data = simplexml_load_string($get);
-			return $data;
+      $json = json_encode($data);
+			return json_decode($json,TRUE);
 		}
 		function jks_gt_csv($url,$seperator=",",$enclosure='"',$escape="\n"){
 			$get = file_get_contents($url);
@@ -494,8 +495,8 @@ function parseJKS($code){
 			return ord($string);
 		}
 		// Decoding/Encoding
-    function jks_string_json_d($string){
-      return json_decode($string);
+    function jks_string_json_d($string,$array=false){
+      return json_decode($string,$array);
     }
     function jks_string_json_e($string){
       return json_encode($string);
@@ -659,6 +660,38 @@ function parseJKS($code){
 		}
 		function jks_bool_c_v($string){
 			return boolval($string);
+		}
+    function jks_bool_is_positive($string){
+      $string=strtolower($string);
+			switch($string){
+        case 'ja':
+        case 'yes':
+        case 'oui':
+        case 'gerne':
+        case 'gern':
+        case 'ja gerne':
+        case 'ja gern':
+        case 'sehr gerne':
+        case 'sehr gern':
+        case 'sicher':
+        case 'jop':
+        case 'ja sehr':
+        case 'ok':
+        case 'okay':
+        case 'gern ja':
+        case 'gerne ja':
+        case 'gut':
+        case 'jup':
+        case 'jap':
+        case 'jupp':
+        case 'das klingt doch gut':
+        case 'das tönt doch gut':
+        case 'auf jeden fall':
+        case 'sofort':
+          return true;
+        default:
+          return false;
+      }
 		}
 		//Validations
 		function jks_vali_url($url){
