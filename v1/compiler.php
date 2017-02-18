@@ -73,9 +73,10 @@ function parseJKS($code){
 	}
 	//Deactivate all javascripts
 	$count=1;
+  /*
 	while($count!=0){
 		$code = preg_replace('#(<[\s]*script\b[^>]*>([\s\S]*?)<[\s]*\/[\s]*script[\s]*>)#i','',$code,-1,$count);
-	}
+	}*/
 
 	//Android functions
 	function jks_android_createEvent($start,$end,$name){
@@ -83,8 +84,7 @@ function parseJKS($code){
 		$end=htmlspecialchars($end);
 		$name=htmlspecialchars(trim($name));
 		if($start!=0||$end!=0||$name!=""){
-			echo "<script>Android.createEvent($start,$end,false,$name);</script>";
-			return true;
+			return "<script>Android.createEvent($start,$end,false,$name);</script>";
 		}else{
 			return false;
 		}
@@ -93,13 +93,11 @@ function parseJKS($code){
 		$hour=htmlspecialchars($hour);
 		$minutes=htmlspecialchars($minutes);
 		$name=htmlspecialchars(trim($name));
-		echo "<script>Android.setAlarm($hour,$minutes,'$name')</script>";
-		return true;
+		return "<script>Android.setAlarm($hour,$minutes,'$name')</script>";
 	}
 	function jks_android_setBrightness($value){
 		$value=htmlspecialchars(trim($value));
-		echo "<script>Android.setBrightness($value)</script>";
-		return true;
+		return "<script>Android.setBrightness($value)</script>";
 	}
   function jks_android_setHueLightState($name,$state){
 		$name=htmlspecialchars(trim($name));
@@ -144,8 +142,8 @@ function parseJKS($code){
 		function jks_math_div($num1,$num2){
 			return $num1/$num2;
 		}
-		function jks_math_rnd($num){
-			return round($num);
+		function jks_math_rnd($num,$precision=0,$mode=PHP_ROUND_HALF_UP){
+			return round($num,$precision,$mode);
 		}
 		function jks_math_rnd_d($num){
 			return floor($num);
@@ -396,6 +394,15 @@ function parseJKS($code){
       $string = str_ireplace("letzten freitag","last friday",$string);
       $string = str_ireplace("letzten samstag","last saturday",$string);
       $string = str_ireplace("letzten sonntag","last sunday",$string);
+
+      $string = str_ireplace("letztem montag","last monday",$string);
+      $string = str_ireplace("letztem dienstag","last tuesday",$string);
+      $string = str_ireplace("letztem mittwoch","last wednesday",$string);
+      $string = str_ireplace("letztem donnerstag","last thursday",$string);
+      $string = str_ireplace("letztem freitag","last friday",$string);
+      $string = str_ireplace("letztem samstag","last saturday",$string);
+      $string = str_ireplace("letztem sonntag","last sunday",$string);
+
       $string = str_ireplace("ersten","1.",$string);
       $string = str_ireplace("zweiten","2.",$string);
       $string = str_ireplace("dritten","3.",$string);
@@ -494,6 +501,9 @@ function parseJKS($code){
     function jks_string_char_o($string){
 			return ord($string);
 		}
+    function jks_string_char_html($number){
+      return "&#$number;";
+    }
 		// Decoding/Encoding
     function jks_string_json_d($string,$array=false){
       return json_decode($string,$array);
